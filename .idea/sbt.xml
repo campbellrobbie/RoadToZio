@@ -13,7 +13,7 @@
             <option value="$PROJECT_DIR$/weatherApp" />
           </set>
         </option>
-        <option name="sbtVersion" value="1.6.2" />
+        <option name="sbtVersion" value="1.7.1" />
       </SbtProjectSettings>
     </option>
   </component>

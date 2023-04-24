@@ -1,19 +1,16 @@
 package com.weather
 
+import com.weather.http.{HttpClient, HttpServer}
+import com.weather.service.WeatherServiceImpl
 import zio._
-import zio.Console._
-
-import java.io.IOException
-
 object Main extends ZIOAppDefault {
 
-  def run: ZIO[Any, IOException, Unit] = fetchWeatherData
-
-  val fetchWeatherData: ZIO[Any, IOException, Unit] =
-    for {
-      _ <- printLine("Hello! Shall we implement some code to fetch weather data????")
-      name <- readLine
-      _ <- printLine(s"kewl beans ")
+  override def run = ZIO.scoped {
+    val service = for {
+      service <- ZIO.service[WeatherServiceImpl]
     } yield ()
 
+    service.provide(HttpServer.build(), WeatherServiceImpl.live, HttpClient.live)
+
+  }
 }
