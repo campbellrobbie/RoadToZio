@@ -25,7 +25,6 @@ private final class WeatherClientImpl(httpClient: HttpClient) extends WeatherCli
   override def getLocation(lat: Double, lon: Double, apiKey: String): Task[Location] =
     httpClient.makeRequest(buildGetLocationRequest(lat, lon, apiKey))
 
-
   def buildGetLocationRequest(lat: Double, lon: Double, apiKey: String): Request[Task] =
     Request[Task](GET, Uri(path = Uri.Path.unsafeFromString(baseUri)))
       .withQueryParam("lat", lat)
