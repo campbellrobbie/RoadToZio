@@ -21,7 +21,7 @@ object HttpClient {
       } yield new HttpClientImpl(client)
     )
 
- private class HttpClientImpl(client: Client[Task]) extends HttpClient {
+ final class HttpClientImpl(client: Client[Task]) extends HttpClient {
 
    override def makeRequest[A](request: Request[Task])(implicit d: EntityDecoder[Task, A]): Task[A] = client.expect[A](request)
 

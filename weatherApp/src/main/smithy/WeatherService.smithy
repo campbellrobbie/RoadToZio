@@ -10,19 +10,19 @@ service WeatherService {
     operations: [GetLocation, PutLocation, DeleteLocation]
 }
 
-@http(method: "GET", uri: "/location/{lat}/{lon}", code: 200)
+@http(method: "GET", uri: "/location/{name}/{lat}/{lon}", code: 200)
 operation GetLocation {
     input: GetLocationRequest
     output: GetLocationResponse
 }
 
-@http(method: "PUT", uri: "/location/{lat}/{lon}", code: 200)
+@http(method: "PUT", uri: "/location/{name}/{lat}/{lon}", code: 200)
 operation PutLocation {
     input: PutLocationRequest
     output: PutLocationResponse
 }
 
-@http(method: "DELETE", uri: "/location/{lat}/{lon}", code: 200)
+@http(method: "DELETE", uri: "/location/{name}/{lat}/{lon}", code: 200)
 operation DeleteLocation {
     input: DeleteLocationRequest
     output: DeleteLocationResponse

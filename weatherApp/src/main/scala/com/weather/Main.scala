@@ -1,5 +1,6 @@
 package com.weather
 
+import com.weather.client.WeatherClient
 import com.weather.http.{HttpClient, HttpServer}
 import com.weather.service.WeatherServiceImpl
 import zio._
@@ -10,7 +11,7 @@ object Main extends ZIOAppDefault {
       weatherService <- ZIO.service[WeatherServiceImpl]
     } yield weatherService
 
-    service.provide(HttpServer.build(), WeatherServiceImpl.live, HttpClient.live)
+    service.provide(WeatherServiceImpl.live, HttpClient.live, WeatherClient.httpLayer)
 
   }
 }
